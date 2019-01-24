@@ -15,15 +15,60 @@
 // Principle 1
 
 // code example for Window Binding
+ 
+// function coffeeBrew (type) {
+//     console.log(`I like ${type} coffee. `);
+//     return;
+// }
+
+// coffeeBrew("french pressed");
 
 // Principle 2
 
 // code example for Implicit Binding
 
+const coffeeBrew = {
+    strength: "strong",
+    roast: "medium",
+    brewPref: function () {
+        console.log(`I like my coffee ${this.strength} and ${this.roast}.`)
+    }
+    
+}
+
+coffeeBrew.brewPref();
+
 // Principle 3
 
 // code example for New Binding
 
+
+function AnotherPerson(info) {
+    this.name = info.name;
+    this.beverage = info.beverage;
+    this.preference = function () {
+        console.log(`${this.name} only drinks ${this.beverage}`)
+        return
+    }
+}
+
+const john = new AnotherPerson({
+    name: "John",
+    beverage: "water",
+})
+
+john.preference();
+
+
 // Principle 4
 
 // code example for Explicit Binding
+
+const person = {
+    name: "Zoey"
+}
+function morningDrink (){
+    console.log(`${this.name} prefers tea over coffee.`)
+}
+
+morningDrink.call(person)
